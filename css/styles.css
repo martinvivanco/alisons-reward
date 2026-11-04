@@ -1,0 +1,205 @@
+:root{
+  --cream:#f7f0d6;
+  --cream-2:#fbf6e4;
+  --blue:#a8c3d9;
+  --blue-line:#9dbbd3;
+  --blue-ink:#7d9fc0;
+  --red:#c9302c;
+  --ink:#3d4a5c;
+  --gold:#e8b23a;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:"Patrick Hand", system-ui, sans-serif;
+  min-height:100vh;
+}
+[hidden]{display:none !important}
+
+header{ text-align:center; padding:28px 16px 14px; }
+h1{
+  margin:0;
+  font-family:"Luckiest Guy", cursive;
+  font-weight:400;
+  color:var(--blue-ink);
+  font-size:clamp(32px, 7vw, 64px);
+  letter-spacing:2px;
+  text-shadow:3px 3px 0 #d9e5ef;
+  transform:rotate(-1deg);
+}
+h1 .de{font-size:.6em}
+.subtitle{font-size:clamp(16px,2.5vw,20px); color:#8a8f99; margin-top:4px}
+
+/* Marco azul con estrellas */
+.frame{
+  display:block;
+  background-color:var(--blue);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='%23f7f0d6' opacity='.85'%3E%3Cpath transform='translate(6 6) scale(1.1)' d='M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.2l7.1-.6z'/%3E%3Cpath transform='translate(42 42) scale(1.1)' d='M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.2l7.1-.6z'/%3E%3C/g%3E%3C/svg%3E");
+  padding:clamp(16px,4vw,44px);
+}
+.sheet{
+  max-width:980px; margin:0 auto;
+  background:var(--cream-2);
+  border-radius:4px;
+  box-shadow:0 6px 0 rgba(0,0,0,.06);
+  padding:clamp(12px,2.5vw,24px);
+}
+
+/* Cuadrícula */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(10, 1fr);
+  border:4px solid var(--blue-line);
+  background:var(--blue-line);
+  gap:4px;
+}
+.cell{
+  position:relative;
+  aspect-ratio:1/1;
+  background:var(--cream-2);
+  display:flex; align-items:center; justify-content:center;
+  padding:0; border:0; font:inherit; color:inherit;
+}
+button.cell{ cursor:pointer }
+.num{
+  position:absolute; top:3px; left:6px;
+  font-size:clamp(11px,1.4vw,14px);
+  color:var(--blue-ink); opacity:.8;
+}
+.cell.milestone{ background:#fff3e8 }
+.cell.milestone.t2{ background:#fdeee0 }
+.cell.milestone.t3{ background:#fbe6d6 }
+.cell.milestone.t4{ background:#fde9b8 }
+.cell.milestone.reached{ box-shadow:inset 0 0 0 3px var(--gold) }
+.cell .label{
+  position:absolute; bottom:4px; left:0; right:0;
+  text-align:center;
+  font-family:"Gochi Hand", cursive;
+  color:var(--red);
+  font-size:clamp(10px,1.35vw,14px);
+  line-height:1; text-transform:uppercase; letter-spacing:.3px;
+  pointer-events:none;
+}
+.cell.reached .label{ font-weight:700 }
+.gift{ width:44%; opacity:.35 }
+
+/* Sticker troquelado */
+.die{
+  height:84%; width:auto; max-width:88%; object-fit:contain;
+  filter:drop-shadow(0 2px 2px rgba(0,0,0,.28)) drop-shadow(0 0 .5px rgba(0,0,0,.25));
+  position:relative; z-index:1;
+  transform:rotate(var(--r, 0deg));
+  user-select:none; -webkit-user-drag:none;
+}
+.milestone .die{ height:62%; margin-bottom:16% }
+.just-added .die{ animation:stamp .45s cubic-bezier(.2,1.6,.4,1) both }
+@keyframes stamp{
+  0%{ transform:scale(1.9) rotate(var(--r)); opacity:0 }
+  100%{ transform:scale(1) rotate(var(--r)); opacity:1 }
+}
+
+/* Pie */
+.footer{
+  display:flex; flex-wrap:wrap; gap:8px 24px;
+  justify-content:space-between; align-items:baseline;
+  margin-top:clamp(12px,2vw,18px);
+  padding:10px 14px;
+  background:var(--cream);
+  border:3px solid var(--blue-line);
+}
+.footer .k{ font-family:"Luckiest Guy",cursive; color:var(--blue-ink); font-size:clamp(16px,2.4vw,22px); letter-spacing:1px; margin-right:8px }
+.footer .v{ font-family:"Gochi Hand",cursive; color:var(--red); font-size:clamp(18px,2.8vw,26px) }
+.progress{ flex-basis:100%; height:10px; border-radius:6px; background:#e4ecf3; overflow:hidden }
+.progress span{ display:block; height:100%; width:0; background:linear-gradient(90deg,var(--blue-ink),var(--gold)); transition:width .5s }
+
+/* Leyenda */
+.legend{
+  margin-top:clamp(12px,2vw,18px);
+  display:grid; grid-template-columns:repeat(3,1fr); gap:12px;
+}
+.legend h2{
+  grid-column:1/-1; margin:0;
+  font-family:"Luckiest Guy",cursive; font-weight:400;
+  color:var(--blue-ink); font-size:clamp(18px,2.6vw,24px); letter-spacing:1px;
+}
+.lg{
+  display:flex; align-items:center; gap:12px;
+  background:#fff; border:2px dashed var(--blue-line); border-radius:10px;
+  padding:10px 12px;
+}
+.lg .die{ height:64px; flex:0 0 auto; --r:-6deg }
+.lg b{ display:block; font-family:"Gochi Hand",cursive; font-size:22px; font-weight:400 }
+.lg small{ font-size:17px; color:#6b7380 }
+.lg .count{ margin-left:auto; font-family:"Gochi Hand",cursive; font-size:24px; color:var(--red) }
+
+/* Panel admin */
+.admin{
+  max-width:980px; margin:18px auto 32px; padding:12px 16px;
+  display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+  border:2px dashed #c9b98a; border-radius:10px; background:#fffaf0;
+  position:sticky; bottom:8px; z-index:40;
+  box-shadow:0 4px 16px rgba(0,0,0,.12);
+}
+@media (max-width:1012px){ .admin{ margin-left:16px; margin-right:16px } }
+.admin .tag{ font-size:16px; color:#8a7a4a; margin-right:auto }
+.admin form{ display:flex; flex-wrap:wrap; gap:8px; width:100% }
+.admin input{
+  flex:1 1 200px; font:inherit; font-size:18px;
+  padding:8px 12px; border:2px solid var(--blue-line); border-radius:8px; background:#fff;
+}
+.admin button{
+  font-family:"Patrick Hand",sans-serif; font-size:18px;
+  border:2px solid var(--blue-ink); background:#fff; color:var(--ink);
+  border-radius:999px; padding:8px 16px; cursor:pointer;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.admin button:hover{ background:#eef4f9 }
+.admin button:disabled{ opacity:.4; cursor:not-allowed }
+.admin button img{ height:26px }
+.admin .link{ border-color:transparent; background:none; text-decoration:underline; color:#8a7a4a; padding:8px }
+.admin .err{ color:var(--red); width:100% }
+
+/* Aviso inferior */
+.snack{
+  position:fixed; left:50%; top:16px; transform:translate(-50%, -160%);
+  background:var(--ink); color:#fff; padding:10px 18px; border-radius:999px;
+  font-size:18px; box-shadow:0 6px 18px rgba(0,0,0,.2);
+  transition:transform .25s ease; z-index:70; max-width:calc(100vw - 32px); text-align:center;
+}
+.snack.show{ transform:translate(-50%, 0) }
+
+/* Confeti */
+.confetti{ position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:50 }
+.confetti i{
+  position:absolute; top:-12px; width:10px; height:14px; border-radius:2px;
+  animation:fall var(--d) linear forwards;
+}
+@keyframes fall{ to{ transform:translate(var(--x), 110vh) rotate(720deg) } }
+.toast{
+  position:fixed; left:50%; top:40%; transform:translate(-50%,-50%) rotate(-3deg);
+  font-family:"Luckiest Guy",cursive; font-size:clamp(32px,8vw,64px);
+  color:var(--red); text-shadow:3px 3px 0 #fff, 6px 6px 0 rgba(0,0,0,.1);
+  animation:pop 2.2s ease forwards; z-index:60; pointer-events:none; text-align:center;
+}
+@keyframes pop{
+  0%{opacity:0; transform:translate(-50%,-50%) scale(.4) rotate(-3deg)}
+  15%{opacity:1; transform:translate(-50%,-50%) scale(1.1) rotate(-3deg)}
+  25%{transform:translate(-50%,-50%) scale(1) rotate(-3deg)}
+  80%{opacity:1}
+  100%{opacity:0}
+}
+
+@media (max-width:640px){
+  .grid{ grid-template-columns:repeat(5,1fr) }
+  .legend{ grid-template-columns:1fr }
+  .admin{ gap:8px; padding:10px 12px }
+  .admin .tag{ flex-basis:100%; font-size:14px }
+  .admin button{ flex:1 1 0; justify-content:center; padding:6px 8px; font-size:16px; gap:4px }
+  .admin button img{ height:22px }
+  .admin .link{ flex:0 0 auto }
+}
+@media (prefers-reduced-motion: reduce){
+  .just-added .die, .toast, .confetti i{ animation:none }
+}

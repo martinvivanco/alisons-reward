@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tabla de Premios de Alison</title>
+  <meta name="description" content="Cada sticker suma: ¡llena los 50 recuadros y gana premios!">
+  <meta property="og:title" content="Tabla de Premios de Alison">
+  <meta property="og:description" content="Cada sticker suma: ¡llena los 50 recuadros y gana premios!">
+  <meta name="theme-color" content="#a8c3d9">
+  <link rel="icon" type="image/webp" href="assets/stickers/polar.webp">
+  <link rel="apple-touch-icon" href="assets/stickers/polar.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Patrick+Hand&family=Gochi+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Tabla de Premios <span class="de">de</span> Alison</h1>
+    <div class="subtitle">Cada sticker suma · ¡llena los 50 recuadros!</div>
+  </header>
+
+  <main class="frame">
+    <div class="sheet">
+      <div class="grid" id="grid" aria-label="Cartilla de 50 recuadros"></div>
+
+      <div class="footer">
+        <div><span class="k">PRÓXIMO PREMIO:</span><span class="v" id="next">Cargando…</span></div>
+        <div><span class="k">STICKERS:</span><span class="v" id="points">–</span></div>
+        <div class="progress"><span id="bar"></span></div>
+      </div>
+
+      <section class="legend" id="legend"><h2>LEYENDA</h2></section>
+    </div>
+  </main>
+
+  <!-- Solo visible para el admin (o al entrar con ?admin) -->
+  <section class="admin" id="admin" hidden></section>
+
+  <div class="snack" id="snack" role="status" aria-live="polite"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
