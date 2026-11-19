@@ -19,6 +19,7 @@ js/config.js           ← premios, tipos de sticker, claves públicas
 js/app.js              ← lógica (carga, render, admin, celebración)
 assets/stickers/       ← Polar, Sapi, Copito (WebP troquelados)
 supabase/schema.sql    ← tabla, reglas de seguridad y sticker inicial
+supabase/migrations/   ← cambios sobre una base ya creada (ej. 002: sticker "Niña buena")
 ```
 
 ## Puesta en marcha (una sola vez)

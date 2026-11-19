@@ -15,6 +15,7 @@ export const TYPES = {
   polar:  { name: "Polar",  reason: "Comer todo",               color: "#f2f2f2", img: "assets/stickers/polar.webp" },
   sapi:   { name: "Sapi",   reason: "Actividad física del día", color: "#8cc63f", img: "assets/stickers/sapi.webp" },
   copito: { name: "Copito", reason: "Dormir 8 horas",           color: "#6b7486", img: "assets/stickers/copito.webp" },
+  nina_buena: { name: "Niña buena", reason: "Portarse bien",   color: "#c9302c", img: "assets/stickers/nina-buena.webp" },
 };
 
 // Recuadro -> premio

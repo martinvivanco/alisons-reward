@@ -5,7 +5,7 @@
 
 create table if not exists public.stickers (
   id          bigint generated always as identity primary key,
-  type        text        not null check (type in ('polar', 'sapi', 'copito')),
+  type        text        not null check (type in ('polar', 'sapi', 'copito', 'nina_buena')),
   note        text,
   created_at  timestamptz not null default now()
 );
